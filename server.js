@@ -1,6 +1,9 @@
 var express = require('express') //tells application it will be using express
 var bodyParser = require('body-parser')
 var app = express()
+var http = require('http').Server(app)
+
+var io = require('socket.io')(http)
 
 
 app.use(express.static(__dirname)) //serves the static html file
@@ -18,12 +21,16 @@ app.get('/messages',(req,res) => {
 })
 
 app.post('/messages',(req,res) => {
-
   messages.push(req.body)
+  io.emit('message',req.body) //created an event called message
   res.sendStatus(200)
 })
 
-var server = app.listen(3000, () =>{
+io.on('connection', (socket) =>{
+  console.log("A user connected");
+})
+
+var server = http.listen(3000, () =>{
 
   console.log("server is listening on port", server.address().port);
 }) //gets express server started and listening for requests
