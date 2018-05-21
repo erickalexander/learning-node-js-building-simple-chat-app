@@ -2,6 +2,8 @@
 
 This week I decided to start learning Node JS. I decided to do so by building a simple app while learning. This app applies the basic concepts and popular Frameworks. Chat app implements web sockets for real time updates between more than one client.
 
+![alt text](https://github.com/erickalexander/learning-node-js-building-simple-chat-app/blob/master/giphy.gif)
+
 
 ## Getting Started
 1. Fork and Clone this repo
